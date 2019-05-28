@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 public class HelloService {
     @Autowired
     RestTemplate restTemplate;
-    public String sayHello(){
-        return restTemplate.getForObject("http://ribbon-provider/hello?name=zhangsan",String.class);
+    public String sayHello(String name){
+        return restTemplate.getForObject("http://ribbon-provider/hello?name="+name,String.class);
     }
 }
