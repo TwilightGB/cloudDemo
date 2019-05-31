@@ -50,10 +50,6 @@ function load() {
 									title : '订单ID'
 								},
 								{
-									field : 'productId',
-									title : '订单商品ID'
-								},
-								{
 									field : 'productName',
 									title : '商品名称'
 								},
@@ -80,19 +76,43 @@ function load() {
 								},
 								{
 									title : '操作',
-									field : 'wpId',
+									field : 'productId',
 									align : 'center',
 									formatter : function(value, row, index) {
-										var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="编辑" onclick="edit(\''
-												+ row.wpId
-												+ '\')"><i class="fa fa-edit"></i></a> ';
-										var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
-												+ row.wpId
-												+ '\')"><i class="fa fa-remove"></i></a> ';
-										return e + d;
+										var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="提交" onclick="submitOrder(\''
+											+ row.productId
+											+ '\')"><i class="fa fa-edit"></i></a> ';
+										// var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="编辑" onclick="edit(\''
+										// 		+ row.wpId
+										// 		+ '\')"><i class="fa fa-edit"></i></a> ';
+										// var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
+										// 		+ row.wpId
+										// 		+ '\')"><i class="fa fa-remove"></i></a> ';
+										return e ;
 									}
 								} ]
 					});
+}
+function submitOrder(id) {
+	layer.confirm('确定要提交选中的记录？', {
+		btn : [ '确定', '取消' ]
+	}, function() {
+		$.ajax({
+			url : prefix + "/submit",
+			type : "get",
+			data : {
+				'id' : id
+			},
+			success : function(r) {
+				if (r.code === 0) {
+					layer.msg("提交成功");
+					reLoad();
+				} else {
+					layer.msg(r.msg);
+				}
+			}
+		});
+	})
 }
 function reLoad() {
 	$('#exampleTable').bootstrapTable('refresh');

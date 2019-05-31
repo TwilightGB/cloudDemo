@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public interface WareHouseService {
 
-//    int currentCount(int productId);
+    int currentCount(int productId);
 
     int insertWarehouseProduct(WarehouseProduct warehouseProduct);
 
@@ -17,4 +17,6 @@ public interface WareHouseService {
     WarehouseProduct getById(int id);
 
     List<WarehouseProduct> list(WarehouseProduct warehouseProduct);
+
+
 }

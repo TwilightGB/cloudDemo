@@ -15,4 +15,6 @@ public interface OrderDetailService {
     OrderDetail getById(int id);
 
     List<OrderDetail> query(OrderDetail orderDetail);
+
+    String getProductCount(int productId);
 }

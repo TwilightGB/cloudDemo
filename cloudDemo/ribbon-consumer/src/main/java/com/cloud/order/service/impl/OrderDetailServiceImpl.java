@@ -6,6 +6,7 @@ import com.cloud.order.po.OrderDetail;
 import com.cloud.order.service.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -14,6 +15,9 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 
     @Autowired
     OrderDetailDao orderDetailDao;
+
+    @Autowired
+    RestTemplate restTemplate;
 //    @Override
 //    public int insert(OrderDetail orderDetail) {
 //        return orderDetailDao.insert(orderDetail);
@@ -32,5 +36,10 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     @Override
     public List<OrderDetail> query(OrderDetail orderDetail) {
         return orderDetailDao.query(orderDetail);
+    }
+
+    @Override
+    public String getProductCount(int productId) {
+        return restTemplate.getForObject("http://wareHouseService/count?id="+productId,String.class);
     }
 }

@@ -6,6 +6,7 @@ import com.cloud.ribbon.service.WareHouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -13,6 +14,19 @@ import java.util.List;
 public class WareHouseServiceImpl implements WareHouseService {
     @Autowired
     WarehouseProductDao warehouseProductDao;
+
+    @Override
+    public int currentCount(int productId) {
+        int count;
+        WarehouseProduct query = new WarehouseProduct();
+        query.setProductId(productId);
+        List<WarehouseProduct> result = warehouseProductDao.queryWarehouseProduct(query);
+        if(!CollectionUtils.isEmpty(result)){
+            count = result.get(0).getCurrentCnt();
+            return count;
+        }
+        return 0;
+    }
 
     @Override
     public int insertWarehouseProduct(WarehouseProduct warehouseProduct) {
