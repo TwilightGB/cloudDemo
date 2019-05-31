@@ -9,6 +9,6 @@ public class DefaultController {
     @GetMapping({"/", ""})
     String welcome(Model model) {
 
-        return "main";
+        return "index";
     }
 }
