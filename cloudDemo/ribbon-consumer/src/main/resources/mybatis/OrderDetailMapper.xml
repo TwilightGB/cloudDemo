@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cloud.order.dao.OrderDetailDao">
+
+    <resultMap type="com.cloud.order.po.OrderDetail" id="BaseResultMap">
+        <result property="orderDetailId" column="order_detail_id" jdbcType="INTEGER"/>
+        <result property="orderId" column="order_id" jdbcType="INTEGER"/>
+        <result property="productId" column="product_id" jdbcType="INTEGER"/>
+        <result property="productName" column="product_name" jdbcType="VARCHAR"/>
+        <result property="productCnt" column="product_cnt" jdbcType="INTEGER"/>
+        <result property="productPrice" column="product_price" jdbcType="DECIMAL"/>
+        <result property="averageCost" column="average_cost" jdbcType="DECIMAL"/>
+        <result property="weight" column="weight" jdbcType="DOUBLE"/>
+        <result property="feeMoney" column="fee_money" jdbcType="DOUBLE"/>
+        <result property="wId" column="w_id" jdbcType="INTEGER"/>
+        <result property="modifiedTime" column="modified_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="getById" resultType="com.cloud.order.dao.OrderDetailDao" resultMap="BaseResultMap">
+		select
+		 `order_detail_id`, `order_id`, `product_id`, `product_name`, `product_cnt`, `product_price`, `average_cost`, `weight`, `fee_money`, `w_id`, `modified_time`
+		from order_detail where order_detail_id = #{orderDetailId,jdbcType=INTEGER}
+	</select>
+
+    <select id="query" parameterType="com.cloud.order.dao.OrderDetailDao" resultMap="BaseResultMap">
+        select
+        `order_detail_id`, `order_id`, `product_id`, `product_name`, `product_cnt`, `product_price`, `average_cost`, `weight`, `fee_money`, `w_id`, `modified_time`
+        from order_detail
+        where 1 = 1
+        <include refid="selectByConditionnWhereSql"/>
+        order by modified_time desc
+    </select>
+
+    <sql id="selectByConditionnWhereSql">
+        <if test="productId != null">
+            and product_id = #{productId,jdbcType=INTEGER}
+        </if>
+    </sql>
+
+</mapper>
