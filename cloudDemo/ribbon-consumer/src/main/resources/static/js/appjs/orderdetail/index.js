@@ -105,7 +105,7 @@ function submitOrder(id) {
 			},
 			success : function(r) {
 				if (r.code === 0) {
-					layer.msg("提交成功");
+					layer.msg(r.message);
 					reLoad();
 				} else {
 					layer.msg(r.msg);

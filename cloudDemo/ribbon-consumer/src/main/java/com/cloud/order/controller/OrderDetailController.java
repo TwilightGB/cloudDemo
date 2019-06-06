@@ -35,13 +35,14 @@ public class OrderDetailController {
     public CommonDto submit(Integer id){
         CommonDto commonDto = new CommonDto();
         String count = orderDetailService.getProductCount(id);
+        orderDetailService.dictList("hobby");
         int result = Integer.parseInt(count);
         if(result==0){
             commonDto.setCode(-1);
-            commonDto.setMessage("商品不足");
+            commonDto.setMessage("商品不足，"+"商品数量"+result);
         }else{
             commonDto.setCode(0);
-            commonDto.setMessage("提交成功");
+            commonDto.setMessage("提交成功，"+"商品数量"+result);
         }
         return commonDto;
     }

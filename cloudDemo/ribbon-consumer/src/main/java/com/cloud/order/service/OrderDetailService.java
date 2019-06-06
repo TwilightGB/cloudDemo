@@ -4,6 +4,7 @@ import com.cloud.order.po.OrderDetail;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public interface OrderDetailService {
@@ -17,4 +18,6 @@ public interface OrderDetailService {
     List<OrderDetail> query(OrderDetail orderDetail);
 
     String getProductCount(int productId);
+
+    Map<String,String> dictList(String dictType);
 }
