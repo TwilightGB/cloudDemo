@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableDiscoveryClient
 @MapperScan("com.cloud.ribbon.dao")
-class RibbonApplication {
+public class RibbonApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(RibbonApplication.class, args);
