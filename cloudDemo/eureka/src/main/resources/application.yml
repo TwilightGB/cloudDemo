@@ -7,11 +7,11 @@ eureka:
     renewal-percent-threshold: 0.1
 
   instance:
-    hostname: 192.168.139.228
+#    hostname: 127.0.0.1
     prefer-ip-address: true
-    instance-id: ${eureka.instance.hostname}:${server.port}
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
   client:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://192.168.250.86:${server.port}/eureka/

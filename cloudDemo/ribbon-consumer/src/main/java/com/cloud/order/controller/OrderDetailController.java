@@ -35,7 +35,7 @@ public class OrderDetailController {
     public CommonDto submit(Integer id){
         CommonDto commonDto = new CommonDto();
         String count = orderDetailService.getProductCount(id);
-        orderDetailService.dictList("hobby");
+//        orderDetailService.dictList("hobby");
         int result = Integer.parseInt(count);
         if(result==0){
             commonDto.setCode(-1);
