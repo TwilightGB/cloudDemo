@@ -14,7 +14,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/orderDetail")
 public class OrderDetailController {
-    String prefix = "orderDetail";
+    String prefix = "orderdetail";
     @Autowired
     private OrderDetailService orderDetailService ;
 
