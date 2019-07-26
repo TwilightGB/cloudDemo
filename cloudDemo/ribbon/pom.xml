@@ -79,7 +79,16 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.41</version>
+        </dependency>
         <!-- 热部署start-->
         <!--<dependency>-->
             <!--<groupId>org.springframework.boot</groupId>-->
@@ -107,6 +116,13 @@
         </dependencies>
     </dependencyManagement>
 
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>nexus-releases</name>
+            <url>http://192.168.250.86:8081/repository/telnet-repository/</url>
+        </repository>
+    </distributionManagement>
     <build>
         <plugins>
             <plugin>
