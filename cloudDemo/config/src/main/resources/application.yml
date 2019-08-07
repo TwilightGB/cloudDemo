@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/TwilightGB/config.git
+          search-paths: /**
+          force-pull: true
+      password: ENC(L4Sa6HtXeXvONCva3emEXOKN1bU16QdJ)
+      name: ENC(kw2KfIBSkA+0RWydqSGB+XlsVBXApPFX)
+
+  application:
+    name: configServer
+server:
+  port: 52300
+jasypt:
+  encryptor:
+    password: gb

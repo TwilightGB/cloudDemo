@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/cloudDemo/ribbon/pom.xml" />
         <option value="$PROJECT_DIR$/cloudDemo/ribbon-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/cloudDemo/feign/pom.xml" />
+        <option value="$PROJECT_DIR$/cloudDemo/config/pom.xml" />
       </list>
     </option>
   </component>
