@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: gateway
+server:
+  port: 52301
+zuul:
+  routes:
+    ribbon:
+      url: http://localhost:8802
