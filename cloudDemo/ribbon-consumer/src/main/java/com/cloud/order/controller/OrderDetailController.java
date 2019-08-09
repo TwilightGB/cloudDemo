@@ -5,6 +5,7 @@ import com.cloud.order.common.CommonDto;
 import com.cloud.order.po.OrderDetail;
 import com.cloud.order.service.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,9 @@ public class OrderDetailController {
     String prefix = "orderdetail";
     @Autowired
     private OrderDetailService orderDetailService ;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @GetMapping("/list")
     @ResponseBody
