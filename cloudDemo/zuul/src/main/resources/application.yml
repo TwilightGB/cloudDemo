@@ -5,5 +5,21 @@ server:
   port: 52301
 zuul:
   routes:
-    ribbon:
-      url: http://localhost:8802
+    #标识你服务的名字，这里可以自己定义，一般方便和规范来讲还是跟自己服务的名字一样
+    order:
+      #服务映射的路径，通过这路径就可以从外部访问你的服务了
+      path: /order*/**
+      #这里一定要是你Eureka注册中心的服务的名称
+      serviceId: order
+#      url: http://localhost:8803/
+
+#    WAREHOUSESERVICE:
+#      path: /*
+#      serviceId : WAREHOUSESERVICE
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8801/eureka/
+  instance:
+    prefer-ip-address: true

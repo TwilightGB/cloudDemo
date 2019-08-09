@@ -5,6 +5,7 @@ import com.cloud.order.Dto.Dict;
 import com.cloud.order.dao.OrderDetailDao;
 import com.cloud.order.po.OrderDetail;
 import com.cloud.order.service.OrderDetailService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -44,8 +45,13 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     }
 
     @Override
+    @HystrixCommand(fallbackMethod = "countServiceFallback")
     public String getProductCount(int productId) {
         return restTemplate.getForObject("http://wareHouseService/count?id=" + productId, String.class);
+    }
+
+    public String countServiceFallback(int id){
+        return "error"+id;
     }
 
     @Override
